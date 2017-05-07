@@ -8,6 +8,22 @@ var pushupStats = {
 
 localStorage.setItem('pushupStats', JSON.stringify(pushupStats));
 
+function updateStats() {
+	var httpRequest = new XMLHttpRequest();
+	var data = new FormData();
+	httpRequest.open("POST", "update_stats.php", true);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	httpRequest.onload = function () {
+		if (httpRequest.responseText == "succes")
+
+	}
+	httpRequest.send(data);
+}
+
 function define() {
 	document.getElementById("cPush").innerHTML = localStorage.pTotal;
 	document.getElementById("cpExp").innerHTML = localStorage.cpExp;
