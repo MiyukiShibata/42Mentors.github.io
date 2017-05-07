@@ -14,21 +14,13 @@
 		);");
 
 	$query1 = $DB_connect->exec("
-		CREATE TABLE IF NOT EXISTS `UserPosts` (
-		`imageID` INT(12) AUTO_INCREMENT,
+		CREATE TABLE IF NOT EXISTS `UserStats` (
 		`username` VARCHAR(30) NOT NULL,
-		`post_date` VARCHAR(30) NOT NULL,
-		`imagepath` VARCHAR(100) NOT NULL,
-		`album` VARCHAR(100),
-		`caption` VARCHAR(100),
-		PRIMARY KEY (`imageID`)
-		);");
-
-	$query2 = $DB_connect->exec("
-		CREATE TABLE IF NOT EXISTS `PostComments` (
-		`username` VARCHAR(30) NOT NULL,
-		`imageID` INT(12) NOT NULL,
-		`post_date` VARCHAR(30) NOT NULL,
-		`comment` VARCHAR(500) NOT NULL
+		`level` INT(20),
+		`armXP` INT(20),
+		`abXP` INT(20),
+		`legXP` INT(20),
+		`cardioXP` INT(20), 
+		PRIMARY KEY (`username`)
 		);");
 ?>

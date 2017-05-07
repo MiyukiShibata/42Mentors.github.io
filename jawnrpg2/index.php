@@ -1,11 +1,12 @@
 <?PHP
 
-if ($camUser->loginStatus()) {
+require_once(__DIR__."/config/database.php");
 
+if ($camUser->loginStatus()) {
+	echo "fuck";
 } else {
 	$camUser->redirect("Login.php");
 }
-
 
 ?>
 

@@ -18,10 +18,6 @@ if (isset($_POST['login']) && $_POST['login'] == "submit") {
 	<head>
 	<title>Login</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="styles/login.css">
-		<link rel="stylesheet" type="text/css" href="styles/navbar.css">
-		<link rel="stylesheet" type="text/css" href="styles/layouts.css">
-		<link href='//fonts.googleapis.com/css?family=Arizonia' rel='stylesheet'>
 	</head>
 	<body>
 	<div class="flex-container" id="login-layout">

@@ -23,10 +23,6 @@ if (isset($_POST['register']) && $_POST['register'] == "submit") {
 <html>
 	<head>
 	<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" href="styles/layouts.css">
-		<link rel="stylesheet" type="text/css" href="styles/navbar.css">
-		<link rel="stylesheet" type="text/css" href="styles/signup.css">
-		<link href='//fonts.googleapis.com/css?family=Arizonia' rel='stylesheet'>
 	</head>
 	<body>
 		<div class="flex-container" id="signup-layout">

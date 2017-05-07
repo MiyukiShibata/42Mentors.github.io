@@ -59,6 +59,12 @@ Class User {
 			$query->bindParam(":tmphash", $hashlink, PDO::PARAM_STR);
 			$query->bindValue(":active", "no");
 			$query->execute();
+
+			$statsQuery = $this->DB_connection->prepare("INSERT INTO `UserStats` 
+				(username, armXP, abXP, legXP, chestXP, backXP) VALUES(:uname, 0, 0, 0, 0, 0);)");
+			$statsQuery->bindParam(":uname", $user, PDO::PARAM_STR);
+			$statsQuery->execute();
+
 		} catch (PDOException $err) {
 			echo $err->getMessage();
 		}
@@ -145,28 +151,17 @@ Class User {
 		}
 	}
 
-	public function post_content($username, $datestamp, $img, $album) {
+	public function update_stats($username, $armXPG, $abXPG, $legXPG, $chestXPG, $backXPG) {
 		try {
-			$query = $this->DB_connection->prepare("INSERT INTO `UserPosts`(
-			username, post_date, imagepath, album) VALUES(:user, :stamp, :img, :album);");
+			$query = $this->DB_connection->prepare("UPDATE `UserStats` SET
+			armXP=armXP+:armXPG, abXP=abXP+:abXPG, legXP=legXP+:legXPG, chestXP=+:chestXPG, backXP=backXP+:backXPG
+			WHERE username=:user;");
+			$query->bindParam(":armXPG", $armXPG, PDO::PARAM_INT);
+			$query->bindParam(":abXPG", $abXPG, PDO::PARAM_INT);
+			$query->bindParam(":legXPG", $legXPG, PDO::PARAM_INT);
+			$query->bindParam(":chestXPG", $chestXPG, PDO::PARAM_INT);
+			$query->bindParam(":backXPG", $backXPG, PDO::PARAM_INT);
 			$query->bindParam(":user", $username, PDO::PARAM_STR);
-			$query->bindParam(":stamp", $datestamp, PDO::PARAM_STR);
-			$query->bindParam(":img", $img, PDO::PARAM_STR);
-			$query->bindParam(":album", $album, PDO::PARAM_STR);
-			$query->execute();
-		} catch (PDOException $err) {
-			echo $err->getMessage();
-		}
-	}
-
-	public function post_comment($username, $postid, $datestamp, $comment) {
-		try {
-			$query = $this->DB_connection->prepare("INSERT INTO `PostComments`(
-				username, imageID, datestamp, comment) VALUES(:user, :postid, :stamp, :comment);");
-			$query->bindParam(":user", $username, PDO::PARAM_STR);
-			$query->bindParam(":postid", $id, PDO::PARAM_STR);
-			$query->bindParam(":stamp", $datestamp, PDO::PARAM_STR);
-			$query->bindParam(":comment", $comment, PDO::PARAM_STR);
 			$query->execute();
 		} catch (PDOException $err) {
 			echo $err->getMessage();

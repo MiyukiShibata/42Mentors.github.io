@@ -14,6 +14,28 @@ var smashStats = {
 
 localStorage.setItem('smashStats', JSON.stringify(smashStats));
 
+function updateStats() {
+	var httpRequest = new XMLHttpRequest();
+	var data = new FormData();
+	httpRequest.open("POST", "update_stats.php", true);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	data.append("armXPG", armXPG);
+	httpRequest.onload = function () {
+		if (httpRequest.responseText == "succes")
+			
+	}
+	httpRequest.send(data);
+}
+
+var infoDiv = document.getElementById('info-div');
+var src = infoDiv.getAttribute('src');
+array = parse_src(src);
+var armXP = array["armXP"];
+
+
 function innerSmash() {
 	document.getElementById("sGp").innerHTML = localStorage.sGp;
 	document.getElementById("sWin").innerHTML = localStorage.sWin;
